@@ -2,7 +2,7 @@
 
 ## Overview
 
-This demo is developed using Swift and UIKit. 
+This demo is developed using Swift and UIKit and MVVM architecture. 
 This contains logic for Asynchronous images download from server by 3 ways
 1. Using Aync-await 2. Using Combine 3. Using Closure
 
