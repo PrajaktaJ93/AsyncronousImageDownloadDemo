@@ -7,7 +7,11 @@
 
 import Foundation
 
-class AlbumViewModel {
+protocol AlbumViewModelProtocol {
+    func callAlbumListAPI(urlString: String, completionBlock: @escaping () -> Void)
+}
+
+class AlbumViewModel: AlbumViewModelProtocol {
     
     var arrAlbum = [AlbumModel]()
     func callAlbumListAPI(urlString: String, completionBlock: @escaping () -> Void) {

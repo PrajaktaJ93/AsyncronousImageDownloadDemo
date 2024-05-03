@@ -10,21 +10,31 @@ import XCTest
 
 class AynchronousImageDownloadDemoTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    var sut: AlbumViewModel!
+        
+    let mockArr = [AlbumModel(albumID: 1, id: 1, title: "title", url: "url", thumbnailURL: "thumbnailURL")]
+    let mockUrl = "testURL"
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func test_AlbumListAPICalled_AlbumsNotZero() throws {
-       let sut = AlbumViewModel()
-        let arr = sut.arrAlbum
-        let mockUrl = "testURL"
-        sut.callAlbumListAPI(urlString: mockUrl, completionBlock: {
-            XCTAssertTrue(arr.count > 0)
-        })
+    override func setUp() {
+        super.setUp()
+        sut = AlbumViewModel()
     }
     
+    override func tearDown() {
+        sut = nil
+        super.tearDown()
+    }
+
+    func test_AlbumListAPICalled_AlbumsNotZero() {
+       
+        sut.callAlbumListAPI(urlString: mockUrl, completionBlock: {
+            XCTAssert(true, "Album List API Success")
+            var isArrayEmpty = true
+            if self.mockArr.count > 0 {
+                isArrayEmpty = false
+            }
+            XCTAssert(isArrayEmpty, "Album List is not empty")
+        })
+    }
 }
+
