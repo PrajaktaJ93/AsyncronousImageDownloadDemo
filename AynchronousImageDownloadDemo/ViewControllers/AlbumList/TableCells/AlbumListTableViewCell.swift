@@ -16,6 +16,7 @@ class AlbumListTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
+    //setup cell
     func setUpCell(album: AlbumModel) {
         
         self.albumNumLbl.text = String(album.id)
